@@ -1,0 +1,111 @@
+/* styles/PaymentModal.module.css */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: slideIn 0.3s ease-out;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #aaa;
+  transition: color 0.2s;
+}
+.closeButton:hover {
+  color: #333;
+}
+
+.paymentTabs {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1.5rem;
+}
+.tabButton {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #777;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+.tabButton.activeTab {
+  color: var(--primary-color);
+  font-weight: bold;
+  border-bottom-color: var(--primary-color);
+}
+
+.paymentDetails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+.qrCode {
+  flex-basis: 200px;
+}
+.paymentInfo { 
+  flex: 1; 
+  text-align: left;
+  min-width: 300px;
+}
+.infoItem { margin-bottom: 1rem; }
+.infoItem span { display: block; font-size: 0.9rem; color: #555; }
+.infoItem strong { font-size: 1.1rem; }
+.infoItem .amount { color: var(--primary-color); }
+.infoItem input { 
+  width: 100%; 
+  padding: 8px; 
+  margin-top: 4px; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--font-geist-mono);
+  font-size: 0.9rem;
+}
+.infoItem button { 
+  margin-left: 8px;
+  border: 1px solid #ccc;
+  background: #eee;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.networkWarning {
+  color: #d9534f; /* Un color rojo para la advertencia de la red */
+}
+.warning { font-size: 0.8rem; color: #777; margin-top: 1.5rem; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

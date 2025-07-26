@@ -1,0 +1,9 @@
+.layoutWrapper { display: flex; flex-direction: column; min-height: 100vh; }
+.mainContent { flex-grow: 1; }
+.navbar { background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
+.navContainer { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.logo { font-size: 1.5rem; font-weight: bold; }
+.navLinks { display: flex; align-items: center; gap: 2rem; }
+.ctaButton { background-color: var(--primary-color); color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; transition: opacity 0.2s; }
+.ctaButton:hover { opacity: 0.9; }
+.footer { background: #222; color: #aaa; text-align: center; padding: 2rem 0; }
