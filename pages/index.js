@@ -1,12 +1,24 @@
 // pages/index.js
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState } from 'react';
 import VideoCarousel from '@/components/VideoCarousel'; // Importamos el carrusel
 import PaymentModal from '@/components/PaymentModal'; // Importamos el modal
+import { getYouTubeVideos } from '@/lib/posts';
 import styles from '../styles/Home.module.css';
 import layoutStyles from '../styles/Layout.module.css';
+
+// Esta función se ejecuta en el servidor antes de cargar la página
+export async function getStaticProps() {
+  // Pedimos los videos a nuestro CMS (Strapi)
+  const youtubeVideos = await getYouTubeVideos();
+  return {
+    props: {
+      youtubeVideos, // Pasamos los videos a la página
+    },
+    revalidate: 60, // Revisa si hay nuevos videos cada 60 segundos
+  };
+}
 
 // Definimos los planes
 const plans = [
@@ -22,7 +34,7 @@ const plans = [
 const YOUR_WALLET_ADDRESS = "19u3LhQXYg5NRkZMQSedyKA4Fi2oki6fgk";
 const USDT_WALLET_ADDRESS = "TGDy2zNnDGPyfuXBLLkqsiA9MqXEAYzCLF";
 
-export default function HomePage() {
+export default function HomePage({ youtubeVideos }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
 
@@ -49,7 +61,7 @@ export default function HomePage() {
       {/* Sección de Video Carrusel */}
       <section className={styles.videoSection}>
         <h2 className={styles.sectionTitle}>Tutoriales y Noticias en Video</h2>
-        <VideoCarousel />
+        <VideoCarousel videos={youtubeVideos}/>
       </section>
 
       {/* Sección de Planes */}

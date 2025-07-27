@@ -1,0 +1,8 @@
+.aboutSection { padding: 2rem 0; }
+.subtitle { font-size: 1.25rem; color: var(--text-secondary); margin-top: -0.5rem; margin-bottom: 3rem; }
+.contentBlock { margin-bottom: 3rem; }
+.contentBlock h2 { font-size: 1.8rem; color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+.socialGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+.socialGrid a { background-color: var(--light-gray); padding: 10px; text-align: center; border-radius: 8px; font-weight: bold; transition: all 0.2s ease; }
+.socialGrid a:hover { background-color: var(--primary-color); color: white; transform: translateY(-2px); }
+.projectList { list-style-position: inside; padding-left: 1rem; }

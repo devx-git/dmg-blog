@@ -2,15 +2,16 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getSortedPostsData } from '../../lib/posts';
+import { getSortedPostsData, getYouTubeVideos } from '../../lib/posts';
 import styles from '../../styles/Blog.module.css';
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
 export async function getStaticProps() {
   const allPostsData = await getSortedPostsData();
+  const youtubeVideos = await getYouTubeVideos();
   return {
-    props: { allPostsData },
+    props: { allPostsData, youtubeVideos },
     revalidate: 10,
   };
 }

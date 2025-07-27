@@ -1,25 +1,20 @@
 // components/VideoCarousel.js
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // Importa los estilos
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
-// Lista de IDs de videos de YouTube
-const videoIds = ['zuWYFugthjs','7dzGW1K7JCE','ua-f4NlA0Nc','0HO8hNH64ro','S_wMIEbJJV8', 'e1CMTL4QM7M','81jqhQIdgQc', 'fU-24SJzyl4', 'qJ66iMD6Ud0']; // Ejemplo: Reemplaza con tus IDs
+export default function VideoCarousel({ videos }) { // Recibe 'videos' como prop
+  // Si no hay videos, no muestra nada
+  if (!videos || videos.length === 0) {
+    return <p>No hay videos disponibles en este momento.</p>;
+  }
 
-export default function VideoCarousel() {
   return (
-    <Carousel 
-      showThumbs={false} 
-      showStatus={false} 
-      infiniteLoop={true} 
-      useKeyboardArrows={true}
-    >
-      {videoIds.map(videoId => (
-        <div key={videoId} className="video-container">
+    <Carousel showThumbs={false} showStatus={false} infiniteLoop={true} useKeyboardArrows={true}>
+      {videos.map(video => (
+        <div key={video.id} className="video-container">
           <iframe 
-            width="560" 
-            height="315" 
-            src={`https://www.youtube.com/embed/${videoId}`}
-            title="YouTube video player" 
+            src={`https://www.youtube.com/embed/${video.attributes.youtubeVideoId}`}
+            title={video.attributes.title} 
             frameBorder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowFullScreen

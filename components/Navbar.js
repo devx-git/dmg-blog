@@ -11,7 +11,7 @@ export default function Navbar() {
         </Link>
         <div className={styles.navLinks}>
           <Link href="/">Blog</Link>
-          {/* ENLACE AÑADIDO A LA BÓVEDA */}
+          <Link href="/about">Sobre Nosotros</Link> 
           <a 
             href="https://boveda.dmgcripto.com" // Asegúrate de que esta URL sea correcta
             target="_blank" 
